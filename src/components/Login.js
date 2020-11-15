@@ -2,12 +2,9 @@ import React, { useRef } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import { Link } from 'react-router-dom'
 
-export default function Register() {
+export default function Login() {
 
-    const { register } = useAuth();
-
-    const usernameRef = useRef();
-    const passRef = useRef();
+    const { login } = useAuth();
 
     const rootStyle = {
         width: "100%",
@@ -18,22 +15,23 @@ export default function Register() {
         flexDirection: "column"
     }
 
-    const kayitOl = () => {
-        const username = usernameRef.current.value;
-        const password = passRef.current.value;
-        register(username, password);
+    const usernameRef = useRef();
+    const passRef = useRef();
+
+    const girisYap = () => {
+        login(usernameRef.current.value, passRef.current.value);
     }
 
     return (
         <div style={rootStyle}>
-            <h1>KAYIT OL</h1>
+            <h1>GİRİŞ YAP</h1>
             Kullanıcı Adı
             <input ref={usernameRef} />
             Şifre
             <input ref={passRef} />
-            <button style={{ marginTop: 10 }} onClick={kayitOl}>Kayıt OL</button>
-            <Link to="/">
-                Zaten bir hesabın var mı? Hemen giriş yap !
+            <button style={{ marginTop: 10 }} onClick={girisYap}>Giriş Yap</button>
+            <Link to="/register">
+                Zaten bir hesabın yok mu? Hemen Kaydol !
             </Link>
         </div>
     )

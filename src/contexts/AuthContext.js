@@ -13,7 +13,11 @@ export const AuthProvider = ({ children }) => {
     }
 
     const register = (email, password) => {
-        auth.createUserWithEmailAndPassword(email, password);
+        auth.createUserWithEmailAndPassword(email, password).catch( err => {console.error(err)});
+    }
+
+    const signOut = () => {
+        auth.signOut();
     }
 
     useEffect(() => {
@@ -24,7 +28,7 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ user, login, register }}>
+        <AuthContext.Provider value={{ user, login, register, signOut }}>
             {children}
         </AuthContext.Provider>
     );
