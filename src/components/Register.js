@@ -27,7 +27,7 @@ export default function Register() {
     return (
         <div style={rootStyle}>
             <h1>KAYIT OL</h1>
-            Kullanıcı Adı
+            EMAIL
             <input ref={usernameRef} />
             Şifre
             <input ref={passRef} />

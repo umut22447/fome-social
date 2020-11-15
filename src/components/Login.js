@@ -25,7 +25,7 @@ export default function Login() {
     return (
         <div style={rootStyle}>
             <h1>GİRİŞ YAP</h1>
-            Kullanıcı Adı
+            EMAIL
             <input ref={usernameRef} />
             Şifre
             <input ref={passRef} />
