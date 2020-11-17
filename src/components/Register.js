@@ -6,8 +6,10 @@ export default function Register() {
 
     const { register } = useAuth();
 
-    const usernameRef = useRef();
+    const emailRef = useRef();
     const passRef = useRef();
+    const usernameRef = useRef();
+    const descRef = useRef();
 
     const rootStyle = {
         width: "100%",
@@ -19,18 +21,24 @@ export default function Register() {
     }
 
     const kayitOl = () => {
-        const username = usernameRef.current.value;
+        const email = emailRef.current.value;
         const password = passRef.current.value;
-        register(username, password);
+        const username = usernameRef.current.value;
+        const desc = descRef.current.value;
+        register(email, password, username, desc);
     }
 
     return (
         <div style={rootStyle}>
             <h1>KAYIT OL</h1>
             EMAIL
-            <input ref={usernameRef} />
+            <input ref={emailRef} />
             Şifre
             <input ref={passRef} />
+            USERNAME
+            <input ref={usernameRef} />
+            DESCRIPTION
+            <input ref={descRef} />
             <button style={{ marginTop: 10 }} onClick={kayitOl} className="btn btn-outline-primary">Kayıt Ol</button>
             <Link to="/">
                 Zaten bir hesabın var mı? Hemen giriş yap !

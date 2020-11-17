@@ -29,7 +29,9 @@ export const PostProvider = ({ children }) => {
 
     const getAllPosts = () => {
         database.ref('posts').on('value', snapshot => {
-            setPostList(Object.values(snapshot.val()));
+            if(snapshot.val() != null){
+                setPostList(Object.values(snapshot.val()));
+            }
         })
     }
 

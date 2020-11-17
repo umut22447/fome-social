@@ -53,9 +53,9 @@ export default function PostList() {
             <hr />
             <ul style={postListStyle}>
                 {postList.length > 0 ? isReversed ? postList.reverse().map((post, index) => {
-                    return <PostItem post={post.post} title={post.title} key={index} />
+                    return <PostItem post={post.post} title={post.title} key={index} userId={post.userId} />
                 }) : postList.map((post, index) => {
-                    return <PostItem post={post.post} title={post.title} key={index} />
+                    return <PostItem post={post.post} title={post.title} key={index} userId={post.userId} />
                 })
                     : null}
             </ul>

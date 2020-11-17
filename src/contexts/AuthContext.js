@@ -1,7 +1,7 @@
 import React, {
     createContext, useState, useContext, useEffect
 } from 'react';
-import { auth, writeUserData, readUserData, deleteUserData } from '../firebase'
+import { auth, writeUserData, readUserData, deleteUserData, database } from '../firebase'
 
 const AuthContext = createContext({});
 
@@ -12,8 +12,10 @@ export const AuthProvider = ({ children }) => {
         auth.signInWithEmailAndPassword(email, password);
     }
 
-    const register = (email, password) => {
-        auth.createUserWithEmailAndPassword(email, password).catch( err => {console.error(err)});
+    const register = (email, password, username, description) => {
+        auth.createUserWithEmailAndPassword(email, password).catch(err => { console.error(err) }).then(result => {
+            writeUserData(result.user.uid, username, email, description);
+        });
     }
 
     const signOut = () => {
@@ -21,7 +23,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        const unsub = auth.onAuthStateChanged( user => {
+        const unsub = auth.onAuthStateChanged(user => {
             setUser(user);
         })
         return unsub;
