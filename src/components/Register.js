@@ -34,12 +34,12 @@ export default function Register() {
             EMAIL
             <input ref={emailRef} />
             Şifre
-            <input ref={passRef} />
+            <input ref={passRef} type = "password" />
             USERNAME
             <input ref={usernameRef} />
             DESCRIPTION
             <input ref={descRef} />
-            <button style={{ marginTop: 10 }} onClick={kayitOl} className="btn btn-outline-primary">Kayıt Ol</button>
+            <button style={{ marginTop: 10 }} onClick={kayitOl}  className="btn btn-outline-primary">Kayıt Ol</button>
             <Link to="/">
                 Zaten bir hesabın var mı? Hemen giriş yap !
             </Link>
