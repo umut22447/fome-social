@@ -7,6 +7,7 @@ const PostContext = createContext({});
 
 export const PostProvider = ({ children }) => {
     const [latestPostId, setLatestPostId] = useState(0);
+    const [postList, setPostList] = useState([]);
 
     const getLatestPostId = () => {
         return database.ref('post-uuid').on('value', snapshot => {
@@ -26,14 +27,19 @@ export const PostProvider = ({ children }) => {
         database.ref('post-uuid').set(latestPostId + 1);
     }
 
-    console.log(latestPostId);
+    const getAllPosts = () => {
+        database.ref('posts').on('value', snapshot => {
+            setPostList(Object.values(snapshot.val()));
+        })
+    }
 
     useEffect(() => {
         getLatestPostId();
+        getAllPosts();
     }, []);
 
     return (
-        <PostContext.Provider value={{ latestPostId, addNewPost }}>
+        <PostContext.Provider value={{ latestPostId, addNewPost, postList }}>
             {children}
         </PostContext.Provider>
     );
