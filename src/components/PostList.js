@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import { usePost } from '../contexts/PostContext'
 import PostItem from './PostItem'
@@ -9,6 +9,7 @@ export default function PostList() {
     const titleRef = useRef();
     const postRef = useRef();
     const userUUID = user.uid;
+    const [isReversed, setIsReversed] = useState(false);
 
     const addPostClicked = () => {
         addNewPost(latestPostId, userUUID, titleRef.current.value, postRef.current.value, new Date().toLocaleString());
@@ -31,6 +32,10 @@ export default function PostList() {
         width: "100%"
     }
 
+    useEffect(() => {
+        setIsReversed(true);
+    }, [postList])
+
     return (
         <div>
             <div style={postAddStyle}>
@@ -42,15 +47,16 @@ export default function PostList() {
                 </form>
                 <div className="m-3">
                     <button onClick={addPostClicked} className="btn btn-outline-success">Yeni Post Ekle</button>
-                    <button onClick={signOut} className="btn btn-outline-danger">Çıkış Yap.</button>
+                    <button onClick={signOut} className="btn btn-outline-danger">Çıkış Yap</button>
                 </div>
             </div>
             <hr />
             <ul style={postListStyle}>
-                {postList.length > 0 ?
-                    postList.reverse().map((post, index) => {
-                        return <PostItem post={post.post} title={post.title} key={index} />
-                    })
+                {postList.length > 0 ? isReversed ? postList.reverse().map((post, index) => {
+                    return <PostItem post={post.post} title={post.title} key={index} />
+                }) : postList.map((post, index) => {
+                    return <PostItem post={post.post} title={post.title} key={index} />
+                })
                     : null}
             </ul>
 

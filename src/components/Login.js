@@ -25,9 +25,9 @@ export default function Login() {
     return (
         <div style={rootStyle}>
             <h1>GİRİŞ YAP</h1>
-            EMAIL
-            <input ref={usernameRef} />
-            Şifre
+            <strong>EMAIL</strong>
+            <input ref={usernameRef}/>
+            <strong>Şifre</strong>
             <input ref={passRef} />
             <button style={{ marginTop: 10 }} onClick={girisYap} className="btn btn-outline-primary">Giriş Yap</button>
             <Link to="/register">

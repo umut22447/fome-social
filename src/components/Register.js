@@ -31,7 +31,7 @@ export default function Register() {
             <input ref={usernameRef} />
             Şifre
             <input ref={passRef} />
-            <button style={{ marginTop: 10 }} onClick={kayitOl} className="btn btn-outline-primary">Kayıt OL</button>
+            <button style={{ marginTop: 10 }} onClick={kayitOl} className="btn btn-outline-primary">Kayıt Ol</button>
             <Link to="/">
                 Zaten bir hesabın var mı? Hemen giriş yap !
             </Link>
