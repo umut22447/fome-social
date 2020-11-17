@@ -12,6 +12,8 @@ export default function PostList() {
 
     const addPostClicked = () => {
         addNewPost(latestPostId, userUUID, titleRef.current.value, postRef.current.value, new Date().toLocaleString());
+        titleRef.current.value = null;
+        postRef.current.value = null;
     }
     const postListStyle = {
         display: "flex",
