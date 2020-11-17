@@ -19,6 +19,7 @@ export default function PostList() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        flexDirection: "column",
         width: "100%"
     }
 
@@ -34,24 +35,24 @@ export default function PostList() {
         <div>
             <div style={postAddStyle}>
                 <form>
-                    <div>Başlık</div>
-                    <input placeholder="Başlık Yaz." ref={titleRef} />
-                    <div>Postun Ta Kendisi</div>
-                    <input placeholder="Neler Hissettiğini Yaz." ref={postRef} />
+                    <div><strong>Başlık</strong></div>
+                    <input placeholder="Başlık Yaz." ref={titleRef} className="form-control" />
+                    <div><strong>Postun Ta Kendisi</strong></div>
+                    <input placeholder="Neler Hissettiğini Yaz." ref={postRef} className="form-control" />
                 </form>
-                <div >
-                    <button onClick={addPostClicked}>Yeni Post Ekle</button>
-                    <button onClick={signOut} >Çıkış Yap.</button>
+                <div className="m-3">
+                    <button onClick={addPostClicked} className="btn btn-outline-success">Yeni Post Ekle</button>
+                    <button onClick={signOut} className="btn btn-outline-danger">Çıkış Yap.</button>
                 </div>
             </div>
             <hr />
-            <div style={postListStyle}>
-                {postList.length > 0 ? <div>
-                    {postList.reverse().map((post, index) => {
+            <ul style={postListStyle}>
+                {postList.length > 0 ?
+                    postList.reverse().map((post, index) => {
                         return <PostItem post={post.post} title={post.title} key={index} />
-                    })}
-                </div> : null}
-            </div>
+                    })
+                    : null}
+            </ul>
 
         </div>
     )

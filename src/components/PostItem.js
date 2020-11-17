@@ -3,9 +3,9 @@ import '../index.css'
 
 export default function PostItem(props) {
     return (
-        <div className="col-md-10 blogShort">
+        <li className="col-md-10 list-group-item bg-light m-3 border border-gray rounded post-list-item">
             <h4>{props.title}</h4>
             <article><p>{props.post}</p></article>
-        </div>
+        </li>
     )
 }

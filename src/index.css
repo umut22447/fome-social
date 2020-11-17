@@ -12,11 +12,10 @@ code {
     monospace;
 }
 
-.blogShort{ 
-  border-bottom:1px solid #ddd;
-  width: 1200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+.post-list-item{
+  transition: border .2s;
+}
+
+.post-list-item:hover{
+  border-color: #0000AB !important;
 }

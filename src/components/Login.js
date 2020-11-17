@@ -29,7 +29,7 @@ export default function Login() {
             <input ref={usernameRef} />
             Şifre
             <input ref={passRef} />
-            <button style={{ marginTop: 10 }} onClick={girisYap}>Giriş Yap</button>
+            <button style={{ marginTop: 10 }} onClick={girisYap} className="btn btn-outline-primary">Giriş Yap</button>
             <Link to="/register">
                 Zaten bir hesabın yok mu? Hemen Kaydol !
             </Link>
